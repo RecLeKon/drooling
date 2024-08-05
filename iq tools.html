@@ -1,0 +1,86 @@
+<html>  
+<head>  
+<title>IQ Tools</title>  
+
+</head>  
+<body>  
+<h1> IQ tools</h1> 
+<button class="btn btn-success" onclick=" window.open('https://apps.iqreseller.com/Default.aspx','_blank')"> Open IQ</button>
+<table>  
+<tr><td>PO:   
+<input type="text" placeholder="Enter the PO" id="po1"> 
+<input type="submit" value="Open" onClick="open_po()"/>
+</td></tr> 
+<tr><td>SO: 
+<input type="text" placeholder="Enter the SO" id="so1">  
+<input type="submit" value="Open" onClick="open_so()"/>
+</td></tr> 
+</table>
+
+<table >
+<tbody>
+<div id="wrapper"></div>
+</tbody>
+</table> 
+ 
+<script type="text/javascript">  
+
+document.getElementById("po1")
+    .addEventListener("keyup", function(e) {
+        if (e.keyCode === 13) {
+            open_po();
+        }
+    });
+	
+document.getElementById("so1")
+    .addEventListener("keyup", function(e) {
+        if (e.keyCode === 13) {
+            open_so();
+        }
+    });
+
+
+
+
+function open_po(){  
+var po=document.getElementById("po1").value;
+var url='https://apps.iqreseller.com/Views/Buy/PO.aspx?View=1&id=' + po;
+
+if(po == ""){
+    alert("Please fill in a PO number");
+    return false;
+} else {
+    window.open(url, "_blank"); 
+    
+	var his =  document.getElementById('wrapper').innerHTML
+	document.getElementById('wrapper').innerHTML = his + '<br>' + po
+	
+	document.getElementById("po1").value = ""
+	
+}
+}  
+
+function open_so(){  
+var so=document.getElementById("so1").value;
+var url='https://apps.iqreseller.com/Views/Sales/SO/SalesOrder/SalesOrder.aspx?View=1&soid=' + so;
+
+if(so == ""){
+    alert("Please fill in a SO number");
+    return false;
+} else {
+    window.open(url, "_blank");
+    
+ 	var his =  document.getElementById('wrapper').innerHTML
+	document.getElementById('wrapper').innerHTML = his + '<br>' + so
+
+ //  var his =  document.getElementById('wrapper').innerHTML
+   // document.getElementById('wrapper').innerHTML = 
+   // his + '<tr><td>SO: </td><td>' + so + '</td><td><form action="https://apps.iqreseller.com/Views/Sales/SO/SalesOrder/SalesOrder.aspx?View=1&soid=' + so + '" target="_blank"><input type="submit" value="Open" /></form></td></tr>'
+   
+    document.getElementById("so1").value = ""
+} 
+} 
+
+</script>  
+</body>  
+</html>  
